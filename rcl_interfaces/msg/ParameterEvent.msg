@@ -3,7 +3,7 @@
 # can only be in one of the three sets.
 
 # The time stamp when this parameter event occurred.
-builtin_interfaces/Time stamp
+time stamp
 
 # Fully qualified ROS path to node.
 string node

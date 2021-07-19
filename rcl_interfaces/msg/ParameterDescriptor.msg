@@ -19,10 +19,10 @@ string description
 string additional_constraints
 
 # If 'true' then the value cannot change after it has been initialized.
-bool read_only false
+bool read_only
 
 # If true, the parameter is allowed to change type.
-bool dynamic_typing false
+bool dynamic_typing
 
 # If any of the following sequences are not empty, then the constraint inside of
 # them apply to this parameter.
@@ -30,7 +30,7 @@ bool dynamic_typing false
 # FloatingPointRange and IntegerRange are mutually exclusive.
 
 # FloatingPointRange consists of a from_value, a to_value, and a step.
-FloatingPointRange[<=1] floating_point_range
+FloatingPointRange floating_point_range
 
 # IntegerRange consists of a from_value, a to_value, and a step.
-IntegerRange[<=1] integer_range
+IntegerRange integer_range

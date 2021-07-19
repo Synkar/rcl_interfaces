@@ -1,46 +1,57 @@
 cmake_minimum_required(VERSION 3.5)
-
 project(rcl_interfaces)
 
-# Default to C++14
-if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 14)
-endif()
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
-
-find_package(ament_cmake REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
-find_package(builtin_interfaces REQUIRED)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/FloatingPointRange.msg"
-  "msg/IntegerRange.msg"
-  "msg/ListParametersResult.msg"
-  "msg/Log.msg"
-  "msg/ParameterDescriptor.msg"
-  "msg/ParameterEventDescriptors.msg"
-  "msg/ParameterEvent.msg"
-  "msg/Parameter.msg"
-  "msg/ParameterType.msg"
-  "msg/ParameterValue.msg"
-  "msg/SetParametersResult.msg"
-  "srv/DescribeParameters.srv"
-  "srv/GetParameters.srv"
-  "srv/GetParameterTypes.srv"
-  "srv/ListParameters.srv"
-  "srv/SetParametersAtomically.srv"
-  "srv/SetParameters.srv"
-  DEPENDENCIES builtin_interfaces
+find_package(catkin REQUIRED COMPONENTS
+  message_generation
 )
 
-install(FILES mapping_rules.yaml DESTINATION share/${PROJECT_NAME})
+## Generate messages in the 'msg' folder
+add_message_files(
+  FILES
+  FloatingPointRange.msg
+  IntegerRange.msg
+  ListParametersResult.msg
+  Log.msg
+  ParameterDescriptor.msg
+  ParameterEventDescriptors.msg
+  ParameterEvent.msg
+  Parameter.msg
+  ParameterType.msg
+  ParameterValue.msg
+  SetParametersResult.msg
+)
 
-# this must happen before the invocation of ament_package()
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
-endif()
+## Generate services in the 'srv' folder
+add_service_files(
+  FILES
+  DescribeParameters.srv
+  GetParameters.srv
+  GetParameterTypes.srv
+  ListParameters.srv
+  SetParametersAtomically.srv
+  SetParameters.srv
+)
 
-ament_package()
+## Generate added messages and services with any dependencies listed here
+generate_messages(
+  # DEPENDENCIES
+)
+
+###################################
+## catkin specific configuration ##
+###################################
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES rcl_interfaces
+  CATKIN_DEPENDS message_runtime
+#  DEPENDS system_lib
+)
+
+###########
+## Build ##
+###########
+
+include_directories(
+# include
+  ${catkin_INCLUDE_DIRS}
+)
