@@ -12,10 +12,10 @@ add_message_files(
   IntegerRange.msg
   ListParametersResult.msg
   Log.msg
-  ParameterDescriptor.msg
-  ParameterEventDescriptors.msg
-  ParameterEvent.msg
   Parameter.msg
+  ParameterDescriptor.msg
+  ParameterEvent.msg
+  ParameterEventDescriptors.msg
   ParameterType.msg
   ParameterValue.msg
   SetParametersResult.msg
@@ -25,11 +25,11 @@ add_message_files(
 add_service_files(
   FILES
   DescribeParameters.srv
-  GetParameters.srv
   GetParameterTypes.srv
+  GetParameters.srv
   ListParameters.srv
-  SetParametersAtomically.srv
   SetParameters.srv
+  SetParametersAtomically.srv
 )
 
 ## Generate added messages and services with any dependencies listed here
